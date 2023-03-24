@@ -5,7 +5,5 @@ namespace TShock.Commands;
 
 public class TShockCommandService : CommandService
 {
-	public TShockCommandService(IReceiver receiver) : base(receiver)
-	{
-	}
+	public TShockCommandService(TShockUser receiver) : base(receiver) { }
 }
