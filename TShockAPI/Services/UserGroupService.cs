@@ -1,9 +1,9 @@
 using TerrariaApi.Server.Services;
-using TShockAPI.Database;
+using TShock.Database;
 using Microsoft.EntityFrameworkCore;
-using TShockAPI.Models;
+using TShock.Models;
 
-namespace TShockAPI.Services;
+namespace TShock.Services;
 
 /// <summary>
 /// Service providing group-related functionality.

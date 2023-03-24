@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using NUnit.Framework;
 using Terraria;
 using Terraria.Localization;
-using TerrariaApi.Server;
+using TerrariaApi.Server.Services;
 using TShockAPI;
 using TShockAPI.DB;
 using TShockAPI.Modules;
@@ -21,7 +21,7 @@ public class GroupTests
 
 		IHostBuilder hostBuilder = Host.CreateDefaultBuilder()
 			.ConfigureServices(svcs => svcs
-				.AddSingleton<ServiceLoader>()
+				.AddSingleton<PluginServiceLoader>()
 				.AddSingleton<HookService>()
 				.AddSingleton<TShock>()
 				.AddSingleton<ICommandService, EasyCommandService>()

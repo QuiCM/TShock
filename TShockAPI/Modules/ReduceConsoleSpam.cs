@@ -17,7 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
 
-namespace TShockAPI.Modules;
+namespace TShock.Modules;
 
 /// <summary>
 /// A module to reduce console spam coming from terraria world load/save etc

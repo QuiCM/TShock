@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Handles the NetLiquidModule. Rejects all incoming net liquid requests, as clients should never send them

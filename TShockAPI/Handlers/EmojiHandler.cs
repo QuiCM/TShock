@@ -1,6 +1,6 @@
 ﻿using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers
+namespace TShock.Handlers
 {
 	/// <summary>
 	/// Handles emoji packets and checks for permissions

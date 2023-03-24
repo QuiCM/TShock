@@ -20,7 +20,7 @@ using System.IO;
 using System.IO.Streams;
 using Terraria;
 
-namespace TShockAPI.Net
+namespace TShock.Net
 {
 	public class SpawnMsg : BaseMsg
 	{
@@ -41,7 +41,7 @@ namespace TShockAPI.Net
 			stream.WriteInt16(TileX);
 			stream.WriteInt16(TileY);
 			stream.WriteInt32(RespawnTimer);
-			stream.WriteByte((byte) PlayerSpawnContext);
+			stream.WriteByte((byte)PlayerSpawnContext);
 		}
 	}
 }

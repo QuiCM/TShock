@@ -18,10 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Collections.Generic;
 using System.ComponentModel;
-using TShockAPI.DB;
-using TShockAPI.Modules;
+using TShock.DB;
+using TShock.Modules;
 
-namespace TShockAPI.Hooks
+namespace TShock.Hooks
 {
 	/// <summary>
 	/// EventArgs used for the <see cref="PlayerHooks.PlayerPostLogin"/> event.
@@ -414,7 +414,7 @@ namespace TShockAPI.Hooks
 		{
 			if (PlayerPostLogin == null)
 			{
-					return;
+				return;
 			}
 
 			PlayerPostLoginEventArgs args = new PlayerPostLoginEventArgs(ply);
@@ -462,7 +462,7 @@ namespace TShockAPI.Hooks
 			if (PlayerPreLogin == null)
 				return false;
 
-			var args = new PlayerPreLoginEventArgs {Player = ply, LoginName = name, Password = pass};
+			var args = new PlayerPreLoginEventArgs { Player = ply, LoginName = name, Password = pass };
 			PlayerPreLogin(args);
 			return args.Handled;
 		}
@@ -491,7 +491,7 @@ namespace TShockAPI.Hooks
 			if (PlayerChat == null)
 				return false;
 
-			var args = new PlayerChatEventArgs {Player = ply, RawText = rawtext, TShockFormattedText = tshockText};
+			var args = new PlayerChatEventArgs { Player = ply, RawText = rawtext, TShockFormattedText = tshockText };
 			PlayerChat(args);
 			tshockText = args.TShockFormattedText;
 
@@ -572,7 +572,7 @@ namespace TShockAPI.Hooks
 			if (PlayerHasBuildPermission == null)
 				return PermissionHookResult.Unhandled;
 
-			var args = new PlayerHasBuildPermissionEventArgs {Player = player, X = x, Y = y};
+			var args = new PlayerHasBuildPermissionEventArgs { Player = player, X = x, Y = y };
 			PlayerHasBuildPermission(args);
 
 			return args.Result;

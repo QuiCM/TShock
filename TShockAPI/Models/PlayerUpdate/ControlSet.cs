@@ -1,6 +1,6 @@
 ﻿using Terraria;
 
-namespace TShockAPI.Models.PlayerUpdate
+namespace TShock.Models.PlayerUpdate
 {
 
 	/// <summary>

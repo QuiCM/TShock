@@ -29,8 +29,8 @@ using Terraria.ID;
 using Terraria.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
-using TShockAPI.Localization;
-using TShockAPI.Modules;
+using TShock.Localization;
+using TShock.Modules;
 
 namespace TShockAPI
 {
@@ -82,7 +82,7 @@ namespace TShockAPI
 		private static readonly Utils instance = new Utils();
 
 		/// <summary>Utils - Creates a utilities object.</summary>
-		private Utils() {}
+		private Utils() { }
 
 		/// <summary>Instance - An instance of the utils class.</summary>
 		/// <value>value - the Utils instance</value>
@@ -211,8 +211,8 @@ namespace TShockAPI
 					tileY = startTileY;
 					break;
 				}
-				tileX = startTileX + r.Next(tileXRange*-1, tileXRange);
-				tileY = startTileY + r.Next(tileYRange*-1, tileYRange);
+				tileX = startTileX + r.Next(tileXRange * -1, tileXRange);
+				tileY = startTileY + r.Next(tileYRange * -1, tileYRange);
 				j++;
 			} while (TilePlacementValid(tileX, tileY) && TileSolid(tileX, tileY));
 		}
@@ -254,7 +254,7 @@ namespace TShockAPI
 			{
 				if (type >= Main.maxItemTypes)
 					return new List<Item>();
-				return new List<Item> {GetItemById(type)};
+				return new List<Item> { GetItemById(type) };
 			}
 			Item item = GetItemFromTag(text);
 			if (item != null)
@@ -421,7 +421,7 @@ namespace TShockAPI
 			{
 				buffname = Lang.GetBuffName(i);
 				if (!String.IsNullOrWhiteSpace(buffname) && buffname.ToLower() == nameLower)
-					return new List<int> {i};
+					return new List<int> { i };
 			}
 			var found = new List<int>();
 			for (int i = 1; i < Main.maxBuffTypes; i++)
@@ -467,7 +467,7 @@ namespace TShockAPI
 			return found;
 		}
 
-				/// <summary>
+		/// <summary>
 		/// Gets a prefix by ID or name
 		/// </summary>
 		/// <param name="idOrName">ID or name</param>
@@ -477,7 +477,7 @@ namespace TShockAPI
 			int type = -1;
 			if (int.TryParse(idOrName, out type) && type >= FirstItemPrefix && type <= LastItemPrefix)
 			{
-				return new List<int> {type};
+				return new List<int> { type };
 			}
 			return GetPrefixByName(idOrName);
 		}
@@ -870,9 +870,9 @@ namespace TShockAPI
 		{
 			PrepareLangForDump();
 			// Lang.setLang(true);
-			Configuration.TShockConfig.DumpDescriptions();
+			Settings.TShockConfig.DumpDescriptions();
 			Permissions.DumpDescriptions(commandService);
-			Configuration.ServerSideConfig.DumpDescriptions();
+			Settings.ServerSideConfig.DumpDescriptions();
 			RestManager.DumpDescriptions(commandService);
 			DumpBuffs("BuffList.txt");
 			DumpItems("Items-1_0.txt", 1, 235);
@@ -891,7 +891,7 @@ namespace TShockAPI
 
 		internal void PrepareLangForDump()
 		{
-			for(int i = 0; i < Main.recipe.Length; i++)
+			for (int i = 0; i < Main.recipe.Length; i++)
 				Main.recipe[i] = new Recipe();
 		}
 
@@ -921,12 +921,12 @@ namespace TShockAPI
 			foreach (var field in typeof(Permissions).GetFields().OrderBy(f => f.Name))
 			{
 				output.Append("|");
-				output.Append((string) field.GetValue(null));
+				output.Append((string)field.GetValue(null));
 				output.Append("|");
 
 				foreach (Group g in TShock.Groups.groups)
 				{
-					if (g.HasPermission((string) field.GetValue(null)))
+					if (g.HasPermission((string)field.GetValue(null)))
 					{
 						output.Append("✔|");
 					}
@@ -992,7 +992,8 @@ namespace TShockAPI
 				item.SetDefaults(i);
 
 				string tt = "";
-				for (int x = 0; x < item.ToolTip.Lines; x++) {
+				for (int x = 0; x < item.ToolTip.Lines; x++)
+				{
 					tt += item.ToolTip.GetLine(x) + "\n";
 				}
 				if (!String.IsNullOrEmpty(item.Name))
@@ -1107,7 +1108,7 @@ namespace TShockAPI
 
 				if (!String.IsNullOrEmpty(prefix))
 				{
-					object[] element = new object[] {i, prefix};
+					object[] element = new object[] { i, prefix };
 					elements.Add(element);
 				}
 			}

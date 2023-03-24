@@ -29,9 +29,9 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Localization;
-using TShockAPI.DB;
-using TShockAPI.Hooks;
-using TShockAPI.Net;
+using TShock.DB;
+using TShock.Hooks;
+using TShock.Net;
 using Timer = System.Timers.Timer;
 using System.Linq;
 

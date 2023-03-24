@@ -22,7 +22,7 @@ using System.IO.Streams;
 using System.Text;
 using Terraria;
 
-namespace TShockAPI.Net
+namespace TShock.Net
 {
 	[Flags]
 	public enum BossFlags : byte

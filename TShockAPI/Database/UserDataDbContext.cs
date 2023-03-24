@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TShockAPI.Models;
+using TShock.Models;
 
-namespace TShockAPI.Database;
+namespace TShock.Database;
 
 /// <summary>
 /// Database context defining player character data

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using TShockAPI.DB;
+using TShock.DB;
 
-namespace TShockAPI.Models;
+namespace TShock.Models;
 
 /// <summary>
 /// A rectangular section of tiles that can be marked as protected, preventing modifications.

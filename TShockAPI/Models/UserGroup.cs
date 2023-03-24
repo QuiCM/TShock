@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace TShockAPI.Models;
+namespace TShock.Models;
 
 /// <summary>
 /// TODO

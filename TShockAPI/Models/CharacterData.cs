@@ -1,4 +1,4 @@
-namespace TShockAPI.Models;
+namespace TShock.Models;
 
 public class CharacterData
 {

@@ -1,4 +1,4 @@
-﻿namespace TShockAPI.Handlers
+﻿namespace TShock.Handlers
 {
 	/// <summary>
 	/// Describes a packet handler that receives a packet from a GetDataHandler

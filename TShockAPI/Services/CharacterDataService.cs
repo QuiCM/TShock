@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TerrariaApi.Server.Services;
-using TShockAPI.Database;
+using TShock.Database;
 
 /// <summary>
 /// Service providing character data related functionality.

@@ -21,7 +21,7 @@ using System.IO;
 using System.IO.Streams;
 using Terraria;
 
-namespace TShockAPI.Net
+namespace TShock.Net
 {
 	public class NetTile : IPackable
 	{
@@ -65,7 +65,7 @@ namespace TShockAPI.Net
 			}
 		}
 
-	public bool HasColor
+		public bool HasColor
 		{
 			get { return TileColor > 0; }
 		}
@@ -132,7 +132,7 @@ namespace TShockAPI.Net
 
 			if (Wire)
 				bits[4] = true;
-			
+
 			if (IsHalf)
 				bits[5] = true;
 
@@ -142,7 +142,7 @@ namespace TShockAPI.Net
 			if (Inactive)
 				bits[7] = true;
 
-			stream.WriteInt8((byte) bits);
+			stream.WriteInt8((byte)bits);
 
 			bits = new BitsByte();
 
@@ -204,7 +204,7 @@ namespace TShockAPI.Net
 
 		public void Unpack(Stream stream)
 		{
-			var flags = (BitsByte) stream.ReadInt8();
+			var flags = (BitsByte)stream.ReadInt8();
 			var flags2 = (BitsByte)stream.ReadInt8();
 
 			Wire2 = flags2[0];
@@ -251,7 +251,7 @@ namespace TShockAPI.Net
 
 			if (flags[5])
 				IsHalf = true;
-			
+
 			if (flags[6])
 				IsActuator = true;
 

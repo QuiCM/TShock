@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terraria;
 using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers
+namespace TShock.Handlers
 {
 	class SyncTilePickingHandler : IPacketHandler<SyncTilePickingEventArgs>
 	{

@@ -1,4 +1,4 @@
-namespace TShockAPI.Configuration;
+namespace TShock.Settings;
 
 /// <summary>
 /// Settings specific to saving and backups.

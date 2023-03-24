@@ -24,7 +24,7 @@ using Newtonsoft.Json;
 using Microsoft.Xna.Framework;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TShockAPI.Extensions;
+using TShock.Extensions;
 
 namespace TShockAPI
 {
@@ -129,13 +129,13 @@ namespace TShockAPI
 			{
 				return update;
 			}
-			
+
 			return null;
 		}
 
 		private void NotifyAdministrators(Dictionary<string, string> update)
 		{
-			var changes = update["changes"].Split(new[] {'\n'}, StringSplitOptions.RemoveEmptyEntries);
+			var changes = update["changes"].Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 			NotifyAdministrator(TSPlayer.Server, changes);
 			foreach (TSPlayer player in TShock.Players)
 			{

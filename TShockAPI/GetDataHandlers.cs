@@ -26,18 +26,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria.ID;
-using TShockAPI.DB;
-using TShockAPI.Net;
+using TShock.DB;
+using TShock.Net;
 using Terraria;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 using Terraria.GameContent.Tile_Entities;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
-using TShockAPI.Localization;
-using TShockAPI.Models;
-using TShockAPI.Models.PlayerUpdate;
-using TShockAPI.Models.Projectiles;
+using TShock.Localization;
+using TShock.Models;
+using TShock.Models.PlayerUpdate;
+using TShock.Models.Projectiles;
 using Terraria.Net;
 using Terraria.GameContent.NetModules;
 
@@ -1077,7 +1077,7 @@ namespace TShockAPI
 			/// The Terraria ID of the player talking to the NPC
 			/// </summary>
 			public byte PlayerId { get; set; }
-			
+
 			/// <summary>
 			/// The NPC ID of the NPC the player is talking to
 			/// </summary>
@@ -1100,8 +1100,8 @@ namespace TShockAPI
 			};
 			NpcTalk.Invoke(null, args);
 			return args.Handled;
-		}		
-		
+		}
+
 		/// <summary>
 		/// For use with a PlayerAnimation event
 		/// </summary>
@@ -1314,7 +1314,7 @@ namespace TShockAPI
 				TileX = tilex,
 				TileY = tiley,
 				Amount = amount,
-				Type = (LiquidType) type,
+				Type = (LiquidType)type,
 			};
 			LiquidSet.Invoke(null, args);
 			return args.Handled;
@@ -1506,7 +1506,7 @@ namespace TShockAPI
 				ID = id,
 				X = x,
 				Y = y,
-				HouseholdStatus = (HouseholdStatus) houseHoldStatus,
+				HouseholdStatus = (HouseholdStatus)houseHoldStatus,
 			};
 			NPCHome.Invoke(null, args);
 			return args.Handled;
@@ -1716,7 +1716,7 @@ namespace TShockAPI
 			var args = new ReleaseNpcEventArgs
 			{
 				Player = player,
-				Data = data,				
+				Data = data,
 				X = _x,
 				Y = _y,
 				Type = _type,
@@ -1724,8 +1724,8 @@ namespace TShockAPI
 			};
 			ReleaseNPC.Invoke(null, args);
 			return args.Handled;
-		}		
-		
+		}
+
 		/// <summary>The arguments to the PlaceObject hook.</summary>
 		public class PlaceObjectEventArgs : GetDataHandledEventArgs
 		{
@@ -2264,7 +2264,7 @@ namespace TShockAPI
 		/// Called when a player lands a golf ball in a cup.
 		/// </summary>
 		public static HandlerList<LandGolfBallInCupEventArgs> LandGolfBallInCup = new HandlerList<LandGolfBallInCupEventArgs>();
-		private static bool OnLandGolfBallInCup(TSPlayer player, MemoryStream data, byte playerIndex, ushort tileX, ushort tileY, ushort hits, ushort projectileType )
+		private static bool OnLandGolfBallInCup(TSPlayer player, MemoryStream data, byte playerIndex, ushort tileX, ushort tileY, ushort hits, ushort projectileType)
 		{
 			if (LandGolfBallInCup == null)
 				return false;
@@ -2486,7 +2486,7 @@ namespace TShockAPI
 				for (int i = 0; i < 8; i++)
 					args.Player.TPlayer.hideVisibleAccessory[i] = hideVisual[i];
 				for (int i = 0; i < 2; i++)
-					args.Player.TPlayer.hideVisibleAccessory[i+8] = hideVisual2[i];
+					args.Player.TPlayer.hideVisibleAccessory[i + 8] = hideVisual2[i];
 				args.Player.TPlayer.hideMisc = hideMisc;
 				args.Player.TPlayer.extraAccessory = extraSlot;
 				args.Player.TPlayer.UsingBiomeTorches = usingBiomeTorches;
@@ -2538,7 +2538,7 @@ namespace TShockAPI
 			}
 
 			if (OnPlayerSlot(args.Player, args.Data, plr, slot, stack, prefix, type) || plr != args.Player.Index || slot < 0 ||
-			    slot > NetItem.MaxInventory)
+				slot > NetItem.MaxInventory)
 				return true;
 			if (args.Player.IgnoreSSCPackets)
 			{
@@ -2557,7 +2557,7 @@ namespace TShockAPI
 				args.Player.PlayerData.StoreSlot(slot, type, prefix, stack);
 			}
 			else if (Main.ServerSideCharacter && TShock.Config.Settings.DisableLoginBeforeJoin && !bypassTrashCanCheck &&
-			         args.Player.HasSentInventory && !args.Player.HasPermission(Permissions.bypassssc))
+					 args.Player.HasSentInventory && !args.Player.HasPermission(Permissions.bypassssc))
 			{
 				// The player might have moved an item to their trash can before they performed a single login attempt yet.
 				args.Player.IsDisabledPendingTrashRemoval = true;
@@ -2655,7 +2655,7 @@ namespace TShockAPI
 				return true;
 
 			if (TShock.Utils.GetActivePlayerCount() + 1 > TShock.Config.Settings.MaxSlots &&
-			    !args.Player.HasPermission(Permissions.reservedslot))
+				!args.Player.HasPermission(Permissions.reservedslot))
 			{
 				TShock.Log.ConsoleDebug("GetDataHandlers / HandleGetSection rejected reserve slot");
 				args.Player.Kick(TShock.Config.Settings.ServerFullReason, true, true);
@@ -2787,7 +2787,7 @@ namespace TShockAPI
 			short tileY = args.Data.ReadInt16();
 			short editData = args.Data.ReadInt16();
 			EditType type = (action == EditAction.KillTile || action == EditAction.KillWall ||
-			                 action == EditAction.KillTileNoItem || action == EditAction.TryKillTile)
+							 action == EditAction.KillTileNoItem || action == EditAction.TryKillTile)
 				? EditType.Fail
 				: (action == EditAction.PlaceTile || action == EditAction.PlaceWall || action == EditAction.ReplaceTile || action == EditAction.ReplaceWall)
 					? EditType.Type
@@ -2829,8 +2829,8 @@ namespace TShockAPI
 
 
 			if (tileType != TileID.ClosedDoor && tileType != TileID.OpenDoor
-			                                  && tileType != TileID.TallGateClosed && tileType != TileID.TallGateOpen
-			                                  && tileType != TileID.TrapdoorClosed && tileType != TileID.TrapdoorOpen)
+											  && tileType != TileID.TallGateClosed && tileType != TileID.TallGateOpen
+											  && tileType != TileID.TrapdoorClosed && tileType != TileID.TrapdoorOpen)
 			{
 				TShock.Log.ConsoleDebug("GetDataHandlers / HandleDoorUse rejected door gap check {0}", args.Player.Name);
 				return true;
@@ -2953,7 +2953,7 @@ namespace TShockAPI
 				TShock.Log.ConsoleDebug($"GetDataHandlers / HandleNpcStrike rejected npc strike {args.Player.Name}");
 				return true;
 			}
-			
+
 			if (Main.npc[id].netID == NPCID.EmpressButterfly)
 			{
 				if (!args.Player.HasPermission(Permissions.summonboss))
@@ -2970,7 +2970,7 @@ namespace TShockAPI
 				else
 					TShock.Utils.SendLogs(string.Format($"{args.Player.Name} summoned the Empress of Light!"), Color.PaleVioletRed, args.Player);
 			}
-			
+
 			if (Main.npc[id].netID == NPCID.CultistDevote || Main.npc[id].netID == NPCID.CultistArcherBlue)
 			{
 				if (!args.Player.HasPermission(Permissions.summonboss))
@@ -2996,7 +2996,7 @@ namespace TShockAPI
 				return true;
 			}
 
-			short type = (short) Main.projectile[index].type;
+			short type = (short)Main.projectile[index].type;
 
 			// TODO: This needs to be moved somewhere else.
 
@@ -3234,7 +3234,7 @@ namespace TShockAPI
 
 			if (OnNpcTalk(args.Player, args.Data, plr, npc))
 				return true;
-			
+
 			//Rejecting player who trying to talk to a npc if player were disabled, mainly for unregistered and logged out players. Preventing smuggling or duplicating their items if player put it in a npc's item slot
 			if (args.Player.IsBeingDisabled())
 			{
@@ -3775,8 +3775,8 @@ namespace TShockAPI
 				NetMessage.SendData((int)PacketTypes.NpcUpdate, -1, -1, NetworkText.Empty, npcID);
 				return true;
 			}
-			
-			if(args.Player.IsBeingDisabled())
+
+			if (args.Player.IsBeingDisabled())
 			{
 				TShock.Log.ConsoleDebug("GetDataHandlers / HandleCatchNpc rejected catch npc {0}", args.Player.Name);
 				return true;
@@ -3791,15 +3791,15 @@ namespace TShockAPI
 			var y = args.Data.ReadInt32();
 			var type = args.Data.ReadInt16();
 			var style = args.Data.ReadInt8();
-			
+
 			if (OnReleaseNpc(args.Player, args.Data, x, y, type, style))
 			{
 				return true;
 			}
 
 			return false;
-		}		
-		
+		}
+
 		private static bool HandleTeleportationPotion(GetDataHandlerArgs args)
 		{
 			var type = args.Data.ReadByte();
@@ -3814,7 +3814,7 @@ namespace TShockAPI
 			{
 				case 0: // Teleportation Potion
 					if (args.Player.ItemInHand.type != ItemID.TeleportationPotion &&
-					    args.Player.SelectedItem.type != ItemID.TeleportationPotion)
+						args.Player.SelectedItem.type != ItemID.TeleportationPotion)
 					{
 						TShock.Log.ConsoleDebug("GetDataHandlers / HandleTeleportationPotion rejected not holding the correct item {0} {1}", args.Player.Name, type);
 						return true;
@@ -3828,7 +3828,7 @@ namespace TShockAPI
 					break;
 				case 1: // Magic Conch
 					if (args.Player.ItemInHand.type != ItemID.MagicConch &&
-					    args.Player.SelectedItem.type != ItemID.MagicConch)
+						args.Player.SelectedItem.type != ItemID.MagicConch)
 					{
 						TShock.Log.ConsoleDebug("GetDataHandlers / HandleTeleportationPotion rejected not holding the correct item {0} {1}", args.Player.Name, type);
 						return true;
@@ -3842,7 +3842,7 @@ namespace TShockAPI
 					break;
 				case 2: // Demon Conch
 					if (args.Player.ItemInHand.type != ItemID.DemonConch &&
-					    args.Player.SelectedItem.type != ItemID.DemonConch)
+						args.Player.SelectedItem.type != ItemID.DemonConch)
 					{
 						TShock.Log.ConsoleDebug("GetDataHandlers / HandleTeleportationPotion rejected not holding the correct item {0} {1}", args.Player.Name, type);
 						return true;
@@ -3972,7 +3972,7 @@ namespace TShockAPI
 			}
 
 			var distanceFromCoinPacketToNpc = Utils.Distance(position, npc.position);
-			if (distanceFromCoinPacketToNpc >= (5*16f)) //5 tile range
+			if (distanceFromCoinPacketToNpc >= (5 * 16f)) //5 tile range
 			{
 				TShock.Log.ConsoleDebug("GetDataHandlers / HandleSyncExtraValue rejected range check {0},{1} vs {2},{3} which is {4}", npc.position.X, npc.position.Y, position.X, position.Y, distanceFromCoinPacketToNpc);
 				return true;
@@ -4028,7 +4028,7 @@ namespace TShockAPI
 
 			if (projectile == null || !projectile.active)
 			{
-					TShock.Log.ConsoleDebug("GetDataHandlers / HandleNpcTeleportPortal rejected null check {0}", args.Player.Name);
+				TShock.Log.ConsoleDebug("GetDataHandlers / HandleNpcTeleportPortal rejected null check {0}", args.Player.Name);
 				NetMessage.SendData((int)PacketTypes.NpcUpdate, -1, -1, NetworkText.Empty, npcIndex);
 				return true;
 			}
@@ -4182,7 +4182,7 @@ namespace TShockAPI
 
 			return false;
 		}
-    
+
 		private static bool HandleEmoji(GetDataHandlerArgs args)
 		{
 			byte playerIndex = args.Data.ReadInt8();
@@ -4274,7 +4274,7 @@ namespace TShockAPI
 			int coinsValue = args.Data.ReadInt32();
 			float baseValue = args.Data.ReadSingle();
 			bool spawnedFromStatus = args.Data.ReadBoolean();
-      
+
 			return false;
 		}
 
@@ -4496,7 +4496,7 @@ namespace TShockAPI
 			{TileID.Crystals, 17},
 			{TileID.MinecartTrack, 3}
 		};
-		
+
 		/// <summary>
 		/// Contains brief information about a projectile
 		/// </summary>

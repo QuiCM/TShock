@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.Utilities;
 using TShockAPI;
-using TShockAPI.DB;
+using TShock.DB;
 using Terraria.Localization;
 using System.Linq;
 using Terraria.DataStructures;
@@ -197,17 +197,17 @@ namespace TShockAPI
 
 		private readonly Dictionary<Color, ConsoleColor> _consoleColorMap = new Dictionary<Color, ConsoleColor>
 		{
-			{ Color.Red,					ConsoleColor.Red },
-			{ Color.Green,					ConsoleColor.Green },
-			{ Color.Blue,					ConsoleColor.Cyan },
-			{ new Color(255, 250, 170),		ConsoleColor.Yellow },
+			{ Color.Red,                    ConsoleColor.Red },
+			{ Color.Green,                  ConsoleColor.Green },
+			{ Color.Blue,                   ConsoleColor.Cyan },
+			{ new Color(255, 250, 170),     ConsoleColor.Yellow },
 			{ new Color(170, 170, 255),     ConsoleColor.Cyan },
-			{ new Color(255, 170, 255),		ConsoleColor.Magenta },
-			{ new Color(170, 255, 170),		ConsoleColor.Green },
+			{ new Color(255, 170, 255),     ConsoleColor.Magenta },
+			{ new Color(170, 255, 170),     ConsoleColor.Green },
 			{ new Color(255, 170, 170),     ConsoleColor.Red },
-			{ new Color(139, 0, 0),			ConsoleColor.DarkRed }, // This is the console warning color
+			{ new Color(139, 0, 0),         ConsoleColor.DarkRed }, // This is the console warning color
 			{ Color.PaleVioletRed,          ConsoleColor.Magenta }, // This is the command logging color
-			{ Color.White,					ConsoleColor.White }
+			{ Color.White,                  ConsoleColor.White }
 		};
 
 		private ConsoleColor PickNearbyConsoleColor(Color color)

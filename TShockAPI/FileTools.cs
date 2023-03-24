@@ -125,7 +125,7 @@ namespace TShockAPI
 			if (writeSSCConfig)
 			{
 				// Add all the missing config properties in the json file
-				TShock.ServerSideCharacterConfig = new Configuration.ServerSideConfig
+				TShock.ServerSideCharacterConfig = new Settings.ServerSideConfig
 				{
 					Settings = { StartingInventory =
 						new List<NetItem>

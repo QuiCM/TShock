@@ -62,5 +62,5 @@ Assembly? Default_Resolving(System.Runtime.Loader.AssemblyLoadContext arg1, Asse
 /// <remarks>This method exists so that the resolver can attach before TSAPI needs its dependencies.</remarks>
 void Start()
 {
-	TerrariaApi.Server.Program.Main(args);
+	TerrariaApi.Server.Services.Program.Main(args);
 }

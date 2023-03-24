@@ -7,7 +7,7 @@ using Terraria;
 using Terraria.ID;
 using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers
+namespace TShock.Handlers
 {
 	/// <summary>
 	/// Handles client side exploits of LandGolfBallInCup packet.

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using TerrariaApi.Configurator;
 
 
-namespace TShockAPI.Configurators;
+namespace TShock.Configurators;
 
 /// <summary>
 /// Configures the configuration provider, adding TShock's configuration options

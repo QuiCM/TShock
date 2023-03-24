@@ -16,13 +16,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Localization;
 
-namespace TShockAPI.Localization
+namespace TShock.Localization
 {
 	/// <summary>
 	/// Provides a series of methods that give English texts
@@ -61,7 +61,7 @@ namespace TShockAPI.Localization
 				foreach (var field in typeof(Main).Assembly.GetType("Terraria.ID.PrefixID")
 							.GetFields().Where(f => !f.Name.Equals("Count", StringComparison.Ordinal)))
 				{
-					Prefixs.Add((int) field.GetValue(null), field.Name);
+					Prefixs.Add((int)field.GetValue(null), field.Name);
 				}
 			}
 			finally

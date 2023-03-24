@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using TShockAPI.DB;
-namespace TShockAPI.Hooks
+using TShock.DB;
+namespace TShock.Hooks
 {
 	public class AccountDeleteEventArgs
 	{

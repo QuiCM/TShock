@@ -1,6 +1,6 @@
 using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers.IllegalPerSe
+namespace TShock.Handlers.IllegalPerSe
 {
 	/// <summary>
 	/// Rejects emoji packets with mismatched identifiers

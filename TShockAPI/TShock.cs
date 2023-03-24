@@ -34,18 +34,17 @@ using Rests;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
-using TerrariaApi.Server;
-using TShockAPI.DB;
-using TShockAPI.Hooks;
+using TerrariaApi.Server.Services;
+using TShock.DB;
+using TShock.Hooks;
 using Terraria.Utilities;
 using Microsoft.Xna.Framework;
-using TShockAPI.Sockets;
-using TShockAPI.CLI;
-using TShockAPI.Localization;
-using TShockAPI.Configuration;
+using TShock.Sockets;
+using TShock.Localization;
+using TShock.Settings;
 using Terraria.GameContent.Creative;
 using System.Runtime.InteropServices;
-using TShockAPI.Modules;
+using TShock.Modules;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -57,96 +56,15 @@ namespace TShockAPI
 	/// </summary>
 	public class TShock : PluginService, IDisposable
 	{
-		/// <summary>VersionNum - The version number the TerrariaAPI will return back to the API. We just use the Assembly info.</summary>
-		public static readonly Version VersionNum = Assembly.GetExecutingAssembly().GetName().Version;
 		/// <summary>VersionCodename - The version codename is displayed when the server starts. Inspired by software codenames conventions.</summary>
 		public static readonly string VersionCodename = "Audaciously Artistic";
 
-		/// <summary>SavePath - This is the path TShock saves its data in. This path is relative to the TerrariaServer.exe (not in ServerPlugins).</summary>
-		public static string SavePath = "tshock";
-		/// <summary>LogFormatDefault - This is the default log file naming format. Actually, this is the only log format, because it never gets set again.</summary>
-		private const string LogFormatDefault = "yyyy-MM-dd_HH-mm-ss";
-		//TODO: Set the log path in the config file.
-		/// <summary>LogFormat - This is the log format, which is never set again.</summary>
-		private static string LogFormat = LogFormatDefault;
-		/// <summary>LogPathDefault - The default log path.</summary>
-		private const string LogPathDefault = "tshock/logs";
-		/// <summary>This is the log path, which is initially set to the default log path, and then to the config file log path later.</summary>
-		private static string LogPath = LogPathDefault;
-		/// <summary>LogClear - Determines whether or not the log file should be cleared on initialization.</summary>
-		private static bool LogClear;
-
-		/// <summary>Will be set to true once Utils.StopServer() is called.</summary>
-		public static bool ShuttingDown;
-
 		/// <summary>Players - Contains all TSPlayer objects for accessing TSPlayers currently on the server</summary>
 		public static TSPlayer[] Players = new TSPlayer[Main.maxPlayers];
-		/// <summary>Bans - Static reference to the ban manager for accessing bans &amp; related functions.</summary>
-		public static BanManager Bans;
-		/// <summary>Warps - Static reference to the warp manager for accessing the warp system.</summary>
-		public static WarpManager Warps;
-		/// <summary>Regions - Static reference to the region manager for accessing the region system.</summary>
-		public static RegionManager Regions;
-		/// <summary>Backups - Static reference to the backup manager for accessing the backup system.</summary>
-		public static BackupManager Backups;
-		/// <summary>Groups - Static reference to the group manager for accessing the group system.</summary>
-		public static GroupManager Groups;
-		/// <summary>Users - Static reference to the user manager for accessing the user database system.</summary>
-		public static UserAccountManager UserAccounts;
-		/// <summary>ProjectileBans - Static reference to the projectile ban system.</summary>
-		public static ProjectileManagager ProjectileBans;
-		/// <summary>TileBans - Static reference to the tile ban system.</summary>
-		public static TileManager TileBans;
-		/// <summary>RememberedPos - Static reference to the remembered position manager.</summary>
-		public static RememberedPosManager RememberedPos;
-		/// <summary>CharacterDB - Static reference to the SSC character manager.</summary>
-		public static CharacterManager CharacterDB;
-		/// <summary>Contains the information about what research has been performed in Journey mode.</summary>
-		public static ResearchDatastore ResearchDatastore;
-		/// <summary>Config - Static reference to the config system, for accessing values set in users' config files.</summary>
-		public static TShockConfig Config { get; set; }
-		/// <summary>ServerSideCharacterConfig - Static reference to the server side character config, for accessing values set by users to modify SSC.</summary>
-		public static ServerSideConfig ServerSideCharacterConfig;
-		/// <summary>DB - Static reference to the database.</summary>
-		public static IDbConnection DB;
-		/// <summary>OverridePort - Determines if TShock should override the server port.</summary>
-		public static bool OverridePort;
-		/// <summary>Geo - Static reference to the GeoIP system which determines the location of an IP address.</summary>
-		public static GeoIPCountry Geo;
-		/// <summary>RestApi - Static reference to the Rest API authentication manager.</summary>
-		public static SecureRest RestApi;
-		/// <summary>RestManager - Static reference to the Rest API manager.</summary>
-		public static RestManager RestManager;
-		/// <summary>Utils - Static reference to the utilities class, which contains a variety of utility functions.</summary>
-		public static Utils Utils = Utils.Instance;
-		/// <summary>UpdateManager - Static reference to the update checker, which checks for updates and notifies server admins of updates.</summary>
-		public static UpdateManager UpdateManager;
-		/// <summary>Log - Static reference to the log system, which outputs to either SQL or a text file, depending on user config.</summary>
-		public static ILog Log;
-		/// <summary>
-		/// Static reference to a <see cref="CommandLineParser"/> used for simple command-line parsing
-		/// </summary>
-		public static CommandLineParser CliParser { get; } = new CommandLineParser();
-		/// <summary>
-		/// Used for implementing REST Tokens prior to the REST system starting up.
-		/// </summary>
-		public static Dictionary<string, SecureRest.TokenData> RESTStartupTokens = new Dictionary<string, SecureRest.TokenData>();
+
 
 		/// <summary>The TShock anti-cheat/anti-exploit system.</summary>
 		internal Bouncer Bouncer;
-
-		/// <summary>The TShock item ban system.</summary>
-		public static ItemBans ItemBans;
-
-		/// <summary>
-		/// TShock's Region subsystem.
-		/// </summary>
-		internal RegionHandler RegionSystem;
-
-		/// <summary>
-		/// Called after TShock is initialized. Useful for plugins that needs hooks before tshock but also depend on tshock being loaded.
-		/// </summary>
-		public static event Action Initialized;
 
 		/// <summary>Version - The version required by the TerrariaAPI to be passed back for checking &amp; loading the plugin.</summary>
 		/// <value>value - The version number specified in the Assembly, based on the VersionNum variable set in this class.</value>
@@ -209,7 +127,7 @@ namespace TShockAPI
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
 			{
 				var osx = Path.Combine(Environment.CurrentDirectory, "runtimes", "osx-x64");
-				if(Directory.Exists(osx))
+				if (Directory.Exists(osx))
 					matches = Directory.GetFiles(osx, "*" + libraryName + "*", SearchOption.AllDirectories);
 			}
 			else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -446,7 +364,7 @@ namespace TShockAPI
 				// handle if Log was not initialised
 				void SafeError(string message)
 				{
-					if(Log is not null) Log.ConsoleError(message);
+					if (Log is not null) Log.ConsoleError(message);
 					else Console.WriteLine(message);
 				};
 				SafeError("TShock encountered a problem from which it cannot recover. The following message may help diagnose the problem.");

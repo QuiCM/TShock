@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
     <PackageReference Include="MySql.Data" Version="8.0.30" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.8" />
     <PackageReference Include="NLog.Extensions.Logging" Version="5.0.4" />
@@ -40,21 +41,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TerrariaServerAPI\TerrariaServerAPI\TerrariaServerAPI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="HttpServer">
-      <HintPath>..\prebuilts\HttpServer.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\prebuilts\HttpServer.dll">
-      <Link>HttpServer.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <Pack>true</Pack>
-    </None>
+    <ProjectReference Include="..\..\Captain\Captain\Captain.csproj" />
   </ItemGroup>
 
 </Project>

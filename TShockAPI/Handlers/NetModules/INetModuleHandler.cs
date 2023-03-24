@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Describes a handler for a net module

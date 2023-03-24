@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Collections.Generic;
 
-namespace TShockAPI.Modules;
+namespace TShock.Modules;
 
 /// <summary>
 /// Defines the bare minimum TShock needs to know about a command

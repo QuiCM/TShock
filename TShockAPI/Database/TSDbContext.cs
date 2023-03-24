@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-using TShockAPI.Settings;
+using TShock.Settings;
 
-namespace TShockAPI.Database;
+namespace TShock.Database;
 
 /// <summary>
 /// Database context defining core TShock data

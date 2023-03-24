@@ -1,6 +1,6 @@
 ﻿using Terraria;
 
-namespace TShockAPI.Models.PlayerUpdate
+namespace TShock.Models.PlayerUpdate
 {
 	/// <summary>
 	/// Model for the first set of misc data sent with a player update packet

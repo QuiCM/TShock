@@ -18,7 +18,7 @@ public class ServerInitTests
 		};
 		On.Terraria.Main.DedServ += cb;
 
-		new Thread(() => TerrariaApi.Server.Program.Main(new string[] { })).Start();
+		new Thread(() => TerrariaApi.Server.Services.Program.Main(new string[] { })).Start();
 
 		var hit = are.WaitOne(TimeSpan.FromSeconds(10));
 

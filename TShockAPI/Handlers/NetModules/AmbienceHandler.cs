@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Rejects ambience new modules from clients

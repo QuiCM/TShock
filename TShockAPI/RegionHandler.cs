@@ -17,8 +17,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
-using TShockAPI.DB;
-using TShockAPI.Hooks;
+using TShock.DB;
+using TShock.Hooks;
 
 namespace TShockAPI
 {

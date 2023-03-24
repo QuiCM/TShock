@@ -19,13 +19,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System.IO;
 using System.IO.Streams;
 
-namespace TShockAPI.Net
+namespace TShock.Net
 {
 	public class ProjectileRemoveMsg : BaseMsg
 	{
 		public override PacketTypes ID
 		{
-			get{ return PacketTypes.ProjectileNew; }
+			get { return PacketTypes.ProjectileNew; }
 		}
 
 		public short Index { get; set; }

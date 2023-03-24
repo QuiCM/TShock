@@ -3,7 +3,7 @@ using System.IO.Streams;
 using Terraria.GameContent;
 using static Terraria.GameContent.NetModules.NetTeleportPylonModule;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Handles a pylon net module

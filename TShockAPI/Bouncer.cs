@@ -19,15 +19,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria.ID;
-using TShockAPI.Net;
+using TShock.Net;
 using Terraria;
 using Microsoft.Xna.Framework;
-using TShockAPI.Localization;
+using TShock.Localization;
 using static TShockAPI.GetDataHandlers;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 using Terraria.Localization;
-using TShockAPI.Models.PlayerUpdate;
+using TShock.Models.PlayerUpdate;
 using System.Threading.Tasks;
 
 namespace TShockAPI
@@ -265,7 +265,7 @@ namespace TShockAPI
 			byte plr = args.PlayerId;
 			ControlSet control = args.Control;
 			MiscDataSet1 miscData1 = args.MiscData1;
-			byte item = args.SelectedItem ;
+			byte item = args.SelectedItem;
 			var pos = args.Position;
 			var vel = args.Velocity;
 
@@ -712,7 +712,7 @@ namespace TShockAPI
 						args.Player.Disable("Reached TileKill threshold.", DisableFlags.WriteToLogAndConsole);
 						args.Player.SendTileSquareCentered(tileX, tileY, 4);
 					}
-					
+
 					TShock.Log.ConsoleDebug("Bouncer / OnTileEdit rejected from tile kill threshold from {0}, (value: {1})", args.Player.Name, args.Player.TileKillThreshold);
 					TShock.Log.ConsoleDebug("If this player wasn't hacking, please report the tile kill threshold they were disabled for to TShock so we can improve this!");
 					args.Handled = true;
@@ -730,7 +730,7 @@ namespace TShockAPI
 						args.Player.Disable("Reached TilePlace threshold.", DisableFlags.WriteToLogAndConsole);
 						args.Player.SendTileSquareCentered(tileX, tileY, 4);
 					}
-					
+
 					TShock.Log.ConsoleDebug("Bouncer / OnTileEdit rejected from tile place threshold from {0}, (value: {1})", args.Player.Name, args.Player.TilePlaceThreshold);
 					TShock.Log.ConsoleDebug("If this player wasn't hacking, please report the tile place threshold they were disabled for to TShock so we can improve this!");
 					args.Handled = true;
@@ -1080,7 +1080,7 @@ namespace TShockAPI
 					args.Player.Disable("Reached projectile update threshold.", DisableFlags.WriteToLogAndConsole);
 					args.Player.RemoveProjectile(ident, owner);
 				}
-				
+
 				TShock.Log.ConsoleDebug("Bouncer / OnNewProjectile rejected from projectile update threshold from {0} {1}/{2}", args.Player.Name, args.Player.ProjectileThreshold, TShock.Config.Settings.ProjectileThreshold);
 				TShock.Log.ConsoleDebug("If this player wasn't hacking, please report the projectile update threshold they were disabled for to TShock so we can improve this!");
 				args.Handled = true;
@@ -1176,7 +1176,7 @@ namespace TShockAPI
 					args.Player.Disable(String.Format("NPC damage exceeded {0}.", TShock.Config.Settings.MaxDamage), DisableFlags.WriteToLogAndConsole);
 					args.Player.SendData(PacketTypes.NpcUpdate, "", id);
 				}
-				
+
 				TShock.Log.ConsoleDebug("Bouncer / OnNPCStrike rejected from damage threshold from {0} {1}/{2}", args.Player.Name, damage, TShock.Config.Settings.MaxDamage);
 				TShock.Log.ConsoleDebug("If this player wasn't hacking, please report the damage threshold they were disabled for to TShock so we can improve this!");
 				args.Handled = true;
@@ -1479,7 +1479,7 @@ namespace TShockAPI
 					args.Player.Disable("Reached TileLiquid threshold.", DisableFlags.WriteToLogAndConsole);
 					args.Player.SendTileSquareCentered(tileX, tileY, 1);
 				}
-				
+
 				TShock.Log.ConsoleDebug("Bouncer / OnLiquidSet rejected from liquid threshold from {0} {1}/{2}", args.Player.Name, args.Player.TileLiquidThreshold, TShock.Config.Settings.TileLiquidThreshold);
 				TShock.Log.ConsoleDebug("If this player wasn't hacking, please report the tile liquid threshold they were disabled for to TShock so we can improve this!");
 				args.Handled = true;
@@ -1819,7 +1819,7 @@ namespace TShockAPI
 				{
 					args.Player.Kick(string.Format("HealOtherPlayer threshold exceeded {0}.", TShock.Config.Settings.HealOtherThreshold));
 				}
-				else 
+				else
 				{
 					args.Player.Disable("Reached HealOtherPlayer threshold.", DisableFlags.WriteToLogAndConsole);
 				}
@@ -1852,7 +1852,7 @@ namespace TShockAPI
 			int y = args.Y;
 			short type = args.Type;
 			byte style = args.Style;
-			
+
 			// if npc released outside allowed tile
 			if (x >= Main.maxTilesX * 16 - 16 || x < 0 || y >= Main.maxTilesY * 16 - 16 || y < 0)
 			{
@@ -1885,8 +1885,8 @@ namespace TShockAPI
 				args.Handled = true;
 				return;
 			}
-		}		
-		
+		}
+
 		/// <summary>Bouncer's PlaceObject hook reverts malicious tile placement.</summary>
 		/// <param name="sender">The object that triggered the event.</param>
 		/// <param name="args">The packet arguments that the event has.</param>
@@ -2310,7 +2310,7 @@ namespace TShockAPI
 			 * 
 			 * Checking whether this damage came from the player is necessary, because the damage from the player can come even when it is hit by a NPC
 			*/
-			if (TShock.Config.Settings.DisableCustomDeathMessages && id != args.Player.Index && 
+			if (TShock.Config.Settings.DisableCustomDeathMessages && id != args.Player.Index &&
 				(reason._sourcePlayerIndex == -1 || reason._sourceNPCIndex != -1 || reason._sourceOtherIndex != -1 || reason._sourceCustomReason != null))
 			{
 				TShock.Log.ConsoleDebug("Bouncer / OnPlayerDamage rejected custom death message from {0}", args.Player.Name);

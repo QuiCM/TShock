@@ -1,4 +1,4 @@
-namespace TShockAPI.Settings;
+namespace TShock.Settings;
 
 /// <summary>
 /// Settings specific to TShock's anti-cheat functions.

@@ -20,7 +20,7 @@ using System;
 using System.IO;
 using System.IO.Streams;
 
-namespace TShockAPI.Net
+namespace TShock.Net
 {
 	public class BaseMsg : IPackable
 	{
@@ -33,7 +33,7 @@ namespace TShockAPI.Net
 		{
 			long start = stream.Position;
 			stream.WriteInt16(0);
-			stream.WriteInt8((byte) ID);
+			stream.WriteInt8((byte)ID);
 			Pack(stream);
 			long end = stream.Position;
 			stream.Position = start;

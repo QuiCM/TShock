@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers
+namespace TShock.Handlers
 {
 	/// <summary>
 	/// Handles the TileEntityDisplayDollItemSync packets and checks for permissions.

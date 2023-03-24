@@ -26,7 +26,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using TerrariaApi.Server;
+using TerrariaApi.Server.Services;
 using TShockAPI;
 using TShockAPI.Modules;
 using TShockCommands.Annotations;

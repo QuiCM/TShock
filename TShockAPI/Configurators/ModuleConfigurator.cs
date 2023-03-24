@@ -19,9 +19,9 @@ using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TerrariaApi.Configurator;
-using TShockAPI.Modules;
+using TShock.Modules;
 
-namespace TShockAPI.Configurators;
+namespace TShock.Configurators;
 
 /// <summary>
 /// Configures <see cref="Module"/> instances from the across the TShockAPI assembly

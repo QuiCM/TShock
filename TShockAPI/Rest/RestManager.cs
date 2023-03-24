@@ -27,9 +27,9 @@ using System.Text;
 using HttpServer;
 using Rests;
 using Terraria;
-using TShockAPI.DB;
+using TShock.DB;
 using Newtonsoft.Json;
-using TShockAPI.Modules;
+using TShock.Modules;
 
 namespace TShockAPI
 {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Rejects client->server bestiary net modules as the client should never send this to the server

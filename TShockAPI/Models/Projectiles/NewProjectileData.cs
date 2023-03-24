@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria;
 
-namespace TShockAPI.Models.Projectiles
+namespace TShock.Models.Projectiles
 {
 	/// <summary>
 	/// Model for the data sent with a new projectile packet

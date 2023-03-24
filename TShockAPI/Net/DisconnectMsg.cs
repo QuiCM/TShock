@@ -20,7 +20,7 @@ using System.IO;
 using System.IO.Streams;
 using System.Text;
 
-namespace TShockAPI.Net
+namespace TShock.Net
 {
 	internal class DisconnectMsg : BaseMsg
 	{

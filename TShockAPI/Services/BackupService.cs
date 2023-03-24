@@ -6,11 +6,11 @@ using Microsoft.Extensions.Options;
 
 using Terraria;
 using TerrariaApi.Server.Services;
-using TShockAPI.Settings;
+using TShock.Settings;
 
 using Timer = System.Threading.Timer;
 
-namespace TShockAPI.Services;
+namespace TShock.Services;
 
 /// <summary>
 /// Service providing world backup related functionality.

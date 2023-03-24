@@ -1,11 +1,11 @@
 using TerrariaApi.Server.Services;
-using TShockAPI.Database;
+using TShock.Database;
 using Microsoft.EntityFrameworkCore;
-using TShockAPI.Models;
+using TShock.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TShockAPI.Services;
+namespace TShock.Services;
 
 /// <summary>
 /// Service providing account-related functionality.

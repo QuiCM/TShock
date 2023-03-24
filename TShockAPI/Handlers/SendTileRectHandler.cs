@@ -8,9 +8,9 @@ using Terraria.GameContent.Tile_Entities;
 using Terraria.ID;
 using Terraria.ObjectData;
 
-using TShockAPI.Net;
+using TShock.Net;
 
-namespace TShockAPI.Handlers
+namespace TShock.Handlers
 {
 	/// <summary>
 	/// Provides processors for handling Tile Rect packets

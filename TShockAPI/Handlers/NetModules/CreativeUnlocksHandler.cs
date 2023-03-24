@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.GameContent.NetModules;
 using Terraria.Net;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Handles creative unlock requests

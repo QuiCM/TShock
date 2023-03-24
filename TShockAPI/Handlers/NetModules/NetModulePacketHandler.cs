@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Handles packet 82 - Load Net Module packets

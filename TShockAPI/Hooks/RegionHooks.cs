@@ -16,9 +16,9 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-using TShockAPI.DB;
+using TShock.DB;
 
-namespace TShockAPI.Hooks
+namespace TShock.Hooks
 {
 	public class RegionHooks
 	{
@@ -110,7 +110,7 @@ namespace TShockAPI.Hooks
 
 			RegionDeleted(new RegionDeletedEventArgs(region));
 		}
-		
+
 		public class RegionRenamedEventArgs
 		{
 			public Region Region { get; private set; }

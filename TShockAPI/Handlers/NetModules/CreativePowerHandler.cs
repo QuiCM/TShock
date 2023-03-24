@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Streams;
 using static TShockAPI.GetDataHandlers;
 
-namespace TShockAPI.Handlers.NetModules
+namespace TShock.Handlers.NetModules
 {
 	/// <summary>
 	/// Provides handling for the Creative Power net module. Checks permissions on all creative powers
@@ -78,21 +78,21 @@ namespace TShockAPI.Handlers.NetModules
 		/// </summary>
 		public static Dictionary<CreativePowerTypes, string> PowerToPermissionMap = new Dictionary<CreativePowerTypes, string>
 		{
-			{ CreativePowerTypes.FreezeTime,              Permissions.journey_timefreeze		},
-			{ CreativePowerTypes.SetDawn,                 Permissions.journey_timeset			},
-			{ CreativePowerTypes.SetNoon,                 Permissions.journey_timeset			},
-			{ CreativePowerTypes.SetDusk,                 Permissions.journey_timeset			},
-			{ CreativePowerTypes.SetMidnight,             Permissions.journey_timeset			},
-			{ CreativePowerTypes.Godmode,                 Permissions.journey_godmode			},
-			{ CreativePowerTypes.WindStrength,            Permissions.journey_windstrength		},
-			{ CreativePowerTypes.RainStrength,            Permissions.journey_rainstrength		},
-			{ CreativePowerTypes.TimeSpeed,               Permissions.journey_timespeed			},
-			{ CreativePowerTypes.RainFreeze,              Permissions.journey_rainfreeze		},
-			{ CreativePowerTypes.WindFreeze,              Permissions.journey_windfreeze		},
-			{ CreativePowerTypes.IncreasePlacementRange,  Permissions.journey_placementrange	},
-			{ CreativePowerTypes.WorldDifficulty,         Permissions.journey_setdifficulty		},
+			{ CreativePowerTypes.FreezeTime,              Permissions.journey_timefreeze        },
+			{ CreativePowerTypes.SetDawn,                 Permissions.journey_timeset           },
+			{ CreativePowerTypes.SetNoon,                 Permissions.journey_timeset           },
+			{ CreativePowerTypes.SetDusk,                 Permissions.journey_timeset           },
+			{ CreativePowerTypes.SetMidnight,             Permissions.journey_timeset           },
+			{ CreativePowerTypes.Godmode,                 Permissions.journey_godmode           },
+			{ CreativePowerTypes.WindStrength,            Permissions.journey_windstrength      },
+			{ CreativePowerTypes.RainStrength,            Permissions.journey_rainstrength      },
+			{ CreativePowerTypes.TimeSpeed,               Permissions.journey_timespeed         },
+			{ CreativePowerTypes.RainFreeze,              Permissions.journey_rainfreeze        },
+			{ CreativePowerTypes.WindFreeze,              Permissions.journey_windfreeze        },
+			{ CreativePowerTypes.IncreasePlacementRange,  Permissions.journey_placementrange    },
+			{ CreativePowerTypes.WorldDifficulty,         Permissions.journey_setdifficulty     },
 			{ CreativePowerTypes.BiomeSpreadFreeze,       Permissions.journey_biomespreadfreeze },
-			{ CreativePowerTypes.SetSpawnRate,            Permissions.journey_setspawnrate		},
+			{ CreativePowerTypes.SetSpawnRate,            Permissions.journey_setspawnrate      },
 		};
 
 		/// <summary>
@@ -100,18 +100,18 @@ namespace TShockAPI.Handlers.NetModules
 		/// </summary>
 		public static Dictionary<string, string> PermissionToDescriptionMap = new Dictionary<string, string>
 		{
-			{ Permissions.journey_timefreeze,			"freeze the time of the server"						},
-			{ Permissions.journey_timeset,				"modify the time of the server"						},
-			{ Permissions.journey_godmode,				"toggle godmode"									},
-			{ Permissions.journey_windstrength,			"modify the wind strength of the server"			},
-			{ Permissions.journey_rainstrength,			"modify the rain strength of the server"			},
-			{ Permissions.journey_timespeed,			"modify the time speed of the server"				},
-			{ Permissions.journey_rainfreeze,			"freeze the rain strength of the server"			},
-			{ Permissions.journey_windfreeze,			"freeze the wind strength of the server"			},
-			{ Permissions.journey_placementrange,		"modify the tile placement range of your character" },
-			{ Permissions.journey_setdifficulty,		"modify the world difficulty of the server"			},
-			{ Permissions.journey_biomespreadfreeze,	"freeze the biome spread of the server"				},
-			{ Permissions.journey_setspawnrate,			"modify the NPC spawn rate of the server"			},
+			{ Permissions.journey_timefreeze,           "freeze the time of the server"                     },
+			{ Permissions.journey_timeset,              "modify the time of the server"                     },
+			{ Permissions.journey_godmode,              "toggle godmode"                                    },
+			{ Permissions.journey_windstrength,         "modify the wind strength of the server"            },
+			{ Permissions.journey_rainstrength,         "modify the rain strength of the server"            },
+			{ Permissions.journey_timespeed,            "modify the time speed of the server"               },
+			{ Permissions.journey_rainfreeze,           "freeze the rain strength of the server"            },
+			{ Permissions.journey_windfreeze,           "freeze the wind strength of the server"            },
+			{ Permissions.journey_placementrange,       "modify the tile placement range of your character" },
+			{ Permissions.journey_setdifficulty,        "modify the world difficulty of the server"         },
+			{ Permissions.journey_biomespreadfreeze,    "freeze the biome spread of the server"             },
+			{ Permissions.journey_setspawnrate,         "modify the NPC spawn rate of the server"           },
 		};
 	}
 }

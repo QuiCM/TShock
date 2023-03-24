@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -26,7 +26,7 @@ using Terraria.Localization;
 using Terraria.Net;
 using Terraria.Net.Sockets;
 
-namespace TShockAPI.Sockets
+namespace TShock.Sockets
 {
 	public class LinuxTcpSocket : ISocket
 	{

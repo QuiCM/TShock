@@ -11,9 +11,9 @@ using Terraria.IO;
 
 using TerrariaApi.Server.Services;
 
-using TShockAPI.Settings;
+using TShock.Settings;
 
-namespace TShockAPI.Services;
+namespace TShock.Services;
 
 /// <summary>
 /// Service providing world saving functionality.

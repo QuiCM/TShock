@@ -1,4 +1,4 @@
-namespace TShockAPI.Settings;
+namespace TShock.Settings;
 
 /// <summary>
 /// Contains configuration settings for TShock

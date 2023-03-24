@@ -16,28 +16,28 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace TShockAPI.Hooks
+namespace TShock.Hooks
 {
-    public class ReloadEventArgs
-    {
-        public TSPlayer Player { get; set; }
-        public ReloadEventArgs(TSPlayer ply)
-        {
-            Player = ply;
-        }
-    }
+	public class ReloadEventArgs
+	{
+		public TSPlayer Player { get; set; }
+		public ReloadEventArgs(TSPlayer ply)
+		{
+			Player = ply;
+		}
+	}
 
-    public class GeneralHooks
-    {
-        public delegate void ReloadEventD(ReloadEventArgs e);
-        public static event ReloadEventD ReloadEvent;
+	public class GeneralHooks
+	{
+		public delegate void ReloadEventD(ReloadEventArgs e);
+		public static event ReloadEventD ReloadEvent;
 
-        public static void OnReloadEvent(TSPlayer ply)
-        {
-            if(ReloadEvent == null)
-                return;
+		public static void OnReloadEvent(TSPlayer ply)
+		{
+			if (ReloadEvent == null)
+				return;
 
-            ReloadEvent(new ReloadEventArgs(ply));
-        }
-    }
+			ReloadEvent(new ReloadEventArgs(ply));
+		}
+	}
 }
