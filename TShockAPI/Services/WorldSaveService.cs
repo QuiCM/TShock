@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.IO;
 
-using TerrariaApi.Server;
+using TerrariaApi.Server.Services;
 
-using TShockAPI.Configuration;
+using TShockAPI.Settings;
 
 namespace TShockAPI.Services;
 

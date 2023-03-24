@@ -5,8 +5,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using Terraria;
-using TerrariaApi.Server;
-using TShockAPI.Configuration;
+using TerrariaApi.Server.Services;
+using TShockAPI.Settings;
 
 using Timer = System.Threading.Timer;
 

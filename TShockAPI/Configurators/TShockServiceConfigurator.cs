@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TerrariaApi.Configurator;
 using Microsoft.Extensions.Configuration;
-using TShockAPI.Configuration;
+using TShockAPI.Settings;
 
 namespace TShockAPI.Configurators;
 
