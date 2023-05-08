@@ -19,10 +19,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /*
  * The purpose of this project is to be the launcher of the TSAPI server.
  * We use this project:
- *	- to copy/move around TShockAPI.dll (the TShock plugin to TSAPI)
+ *	- to copy/move around TShock.dll (the TShock plugin to TSAPI)
  *	- to publish TShock releases.
  *	- move dependencies to a ./bin folder
- * 
+ *
  * The assembly name of this launcher (TShock.exe) was decided on by a community poll.
  */
 
@@ -34,13 +34,13 @@ System.Runtime.Loader.AssemblyLoadContext.Default.Resolving += Default_Resolving
 
 Start();
 
-/// <summary>
-/// Resolves a module from the ./bin folder, either with a .dll by preference or .exe
-/// </summary>
+/*
+ * Resolves a module from the ./bin folder, either with a .dll by preference or .exe
+ */
 Assembly? Default_Resolving(System.Runtime.Loader.AssemblyLoadContext arg1, AssemblyName arg2)
 {
-	if (arg2?.Name is null) return null;
-	if (_cache.TryGetValue(arg2.Name, out Assembly? asm) && asm is not null) return asm;
+	if (arg2.Name is null) return null;
+	if (_cache.TryGetValue(arg2.Name, out Assembly? asm)) return asm;
 
 	var loc = Path.Combine(Environment.CurrentDirectory, "bin", arg2.Name + ".dll");
 	if (File.Exists(loc))
@@ -56,11 +56,11 @@ Assembly? Default_Resolving(System.Runtime.Loader.AssemblyLoadContext arg1, Asse
 	return asm;
 }
 
-/// <summary>
-/// Initiates the TSAPI server.
-/// </summary>
-/// <remarks>This method exists so that the resolver can attach before TSAPI needs its dependencies.</remarks>
+/*
+ * Initiates the TSAPI server.
+ * This method exists so that the resolver can attach before TSAPI needs its dependencies.
+ */
 void Start()
 {
-	TerrariaApi.Server.Services.Program.Main(args);
+	TerrariaServerApi.Program.Main(args);
 }

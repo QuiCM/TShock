@@ -18,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShockAPI", "TShockAPI\TShockAPI.csproj", "{49606449-072B-4CF5-8088-AA49DA586694}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShock", "TShock\TShock.csproj", "{49606449-072B-4CF5-8088-AA49DA586694}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TerrariaServerAPI", "TerrariaServerAPI\TerrariaServerAPI\TerrariaServerAPI.csproj", "{6877506E-ADC6-4142-98A6-79E4FA02855A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TerrariaServerApi", "TerrariaServerAPI\TerrariaServerApi\TerrariaServerApi.csproj", "{6877506E-ADC6-4142-98A6-79E4FA02855A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TShockLauncher", "TShockLauncher\TShockLauncher.csproj", "{2A312452-A43F-43E3-8AEB-E22F9A35C210}"
 EndProject

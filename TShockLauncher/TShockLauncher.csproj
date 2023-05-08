@@ -6,23 +6,21 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<AssemblyName>TShock.Server</AssemblyName> <!-- TShock was initially decided on by a community poll, however tshock already exists as a folder and will clash -->
+		<AssemblyName>TShock.Server</AssemblyName>
 		<RunPostBuildEvent>Always</RunPostBuildEvent>
 		<DebugType>embedded</DebugType>
-		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract> <!-- needed for sqlite native libs -->
-    <ContainerImageName>tshock</ContainerImageName>
-    <Version>5.0.0-beta</Version>
+		<!-- needed for sqlite native libs -->
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    	<ContainerImageName>tshock</ContainerImageName>
+    	<Version>5.0.0-beta</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\TerrariaServerAPI\TerrariaServerAPI\TerrariaServerAPI.csproj" ExcludeFromSingleFile="true" />
-    <Reference Include="HttpServer" ExcludeFromSingleFile="true">
-      <HintPath>..\prebuilts\HttpServer.dll</HintPath>
-    </Reference>
+		<ProjectReference Include="..\TerrariaServerApi\TerrariaServerApi\TerrariaServerApi.csproj" ExcludeFromSingleFile="true" />
     
-    <!-- allow the plugins to be built & copied to ./plugins, but not referenced. -->
-    <ProjectReference Include="..\TShockAPI\TShockAPI.csproj" ExcludeFromSingleFile="true" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\TShockCommands\TShockCommands.csproj" ExcludeFromSingleFile="true" ReferenceOutputAssembly="false" />
+    	<!-- allow the plugins to be built & copied to ./plugins, but not referenced. -->
+    	<ProjectReference Include="..\TShock\TShock.csproj" ExcludeFromSingleFile="true" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="..\..\Captain\Captain\Captain.csproj" ExcludeFromSingleFile="true" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -30,12 +28,11 @@
 		<PackageReference Include="Microsoft.NET.Build.Containers" Version="0.1.8" />
 		<PackageReference Include="MySql.Data" Version="8.0.30" />
 		<PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.8" />
-		<PackageReference Include="ModFramework" Version="1.1.2-alpha" GeneratePathProperty="true" /> <!-- only used to extract out to ./bin. -->
+		<PackageReference Include="ModFramework" Version="1.1.7" GeneratePathProperty="true" /> <!-- only used to extract out to ./bin. -->
 		<PackageReference Include="NLog.Extensions.Logging" Version="5.0.4" /> <!-- allow the dll to be included -->
-		<PackageReference Include="EasyCommands" Version="1.2.4" />  <!-- allow the dll to be included -->
 
 		<!-- the launcher doesnt need the direct OTAPI reference, but since PackageReference[ExcludeFromSingleFile] doesnt work, exclude the assets and copy manually -->
-		<PackageReference Include="OTAPI.Upcoming" Version="3.1.4-alpha" ExcludeAssets="all" GeneratePathProperty="true" />
+		<PackageReference Include="OTAPI.Upcoming" Version="3.1.20" ExcludeAssets="all" GeneratePathProperty="true" />
 		<None Include="$(PkgOTAPI_Upcoming)\lib\net6.0\OTAPI.dll">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
@@ -54,13 +51,13 @@
 		<MakeDir Directories="$(OutDir)plugins" />
 		<MakeDir Directories="$(PublishDir)plugins" />
 		<ItemGroup>
-			<ApiFiles Include="$(ProjectDir)../TShockAPI/bin/$(Configuration)/$(TargetFramework)/TShockAPI*" />
-			<CommandFiles Include="$(ProjectDir)../TShockCommands/bin/$(Configuration)/$(TargetFramework)/TShockCommands*" />
+			<ApiFiles Include="$(ProjectDir)../TShock/bin/$(Configuration)/$(TargetFramework)/TShock*" />
+<!--			<CommandFiles Include="$(ProjectDir)../TShockCommands/bin/$(Configuration)/$(TargetFramework)/TShockCommands*" />-->
 		</ItemGroup>
     <Copy SourceFiles="@(ApiFiles)" DestinationFolder="$(OutDir)plugins" ContinueOnError="true" />
     <Copy SourceFiles="@(ApiFiles)" DestinationFolder="$(PublishDir)plugins" ContinueOnError="true" />
-    <Copy SourceFiles="@(CommandFiles)" DestinationFolder="$(OutDir)plugins" ContinueOnError="true" />
-    <Copy SourceFiles="@(CommandFiles)" DestinationFolder="$(PublishDir)plugins" ContinueOnError="true" />
+<!--    <Copy SourceFiles="@(CommandFiles)" DestinationFolder="$(OutDir)plugins" ContinueOnError="true" />-->
+<!--    <Copy SourceFiles="@(CommandFiles)" DestinationFolder="$(PublishDir)plugins" ContinueOnError="true" />-->
 	</Target>
 	<Target Name="MoveBin" AfterTargets="Publish">
 		<ItemGroup>

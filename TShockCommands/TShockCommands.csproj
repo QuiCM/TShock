@@ -24,6 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TShockAPI\TShockAPI.csproj" />
+    <ProjectReference Include="..\TShock\TShock.csproj" />
   </ItemGroup>
 </Project>
